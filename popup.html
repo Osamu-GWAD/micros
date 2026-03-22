@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 260px;
+      padding: 16px;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #e0e0e0;
+    }
+    h3 {
+      font-size: 13px;
+      color: #60a5fa;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .step {
+      background: #1a1a2e;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border: 1px solid #2a2a3e;
+    }
+    .step-label {
+      font-size: 10px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      transition: opacity 0.15s;
+    }
+    button:hover { opacity: 0.8; }
+    button:disabled { opacity: 0.4; cursor: default; }
+    #btnCreate { background: #3b82f6; color: #fff; }
+    #btnFill   { background: #10b981; color: #0f0f1a; }
+    #btnCode   { background: #f59e0b; color: #0f0f1a; }
+    #btnDOB    { background: #a855f7; color: #fff; }
+    #btnName   { background: #ec4899; color: #fff; }
+    #btnClear  { background: #374151; color: #9ca3af; font-size: 11px; margin-top: 4px; }
+    #btnNuke   { background: #7f1d1d; color: #fca5a5; font-size: 11px; margin-top: 4px; }
+    .info {
+      font-size: 11px;
+      color: #60a5fa;
+      margin-top: 6px;
+      word-break: break-all;
+      min-height: 14px;
+    }
+    .row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .row input {
+      flex: 1;
+      background: #0f0f1a;
+      border: 1px solid #2a2a3e;
+      border-radius: 5px;
+      color: #e0e0e0;
+      padding: 5px 6px;
+      font-size: 11px;
+      width: 0;
+    }
+    .row input::placeholder { color: #555; }
+    #status {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 10px;
+      min-height: 14px;
+      line-height: 1.4;
+    }
+    .dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #374151;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .dot.green  { background: #10b981; }
+    .dot.yellow { background: #f59e0b; animation: pulse 1s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  </style>
+</head>
+<body>
+  <h3>Quick Account Creator</h3>
+
+  <div class="step">
+    <div class="step-label">Step 1 — Get Email</div>
+    <button id="btnCreate">Create Temp Email</button>
+    <div class="info" id="emailDisplay"></div>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 2 — Fill Microsoft Form</div>
+    <button id="btnFill">Fill Email + Click Next</button>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 3 — Verify Code</div>
+    <button id="btnCode">Wait &amp; Fill Code</button>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 4 — Date of Birth</div>
+    <div class="row">
+      <input id="dobMonth" type="number" min="1" max="12" placeholder="MM" value="5">
+      <input id="dobDay"   type="number" min="1" max="31" placeholder="DD" value="18">
+      <input id="dobYear"  type="number" min="1905" max="2006" placeholder="YYYY" value="2000">
+    </div>
+    <button id="btnDOB">Fill DOB + Click Next</button>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 5 — Name</div>
+    <div class="row">
+      <input id="nameFirst" type="text" placeholder="First" value="John">
+      <input id="nameLast"  type="text" placeholder="Last"  value="Smith">
+    </div>
+    <button id="btnName">Fill Name + Click Next</button>
+  </div>
+
+  <button id="btnClear">Reset</button>
+  <button id="btnNuke">🧹 Clear Cookies, History &amp; Site Data</button>
+  <div id="status"><span class="dot" id="dot"></span><span id="statusText">Ready</span></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

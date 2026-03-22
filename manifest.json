@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Quick Account Creator",
+  "version": "2.0",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "tabs",
+    "browsingData",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://api.mail.tm/*",
+    "https://signup.live.com/*",
+    "https://discord.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Quick Account Creator"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://signup.live.com/*"
+      ],
+      "js": [
+        "microsoft_script.js"
+      ]
+    }
+  ]
+}
